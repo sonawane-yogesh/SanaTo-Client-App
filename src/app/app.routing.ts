@@ -8,12 +8,6 @@ const routes: Routes = [
     }, {
         path: 'dashboard',
         component: DashboardComponent
-    }, {
-        path: 'project-workspace',
-        loadChildren: (): Promise<any> => import("./project-workspace/project-workspace.module").then(pw => pw.ProjectWorkspaceModule)
-    }, {
-        path: 'role-management',
-        loadChildren: (): Promise<any> => import("./role-management/role-management.module").then(rm => rm.RoleManagementModule)
     }
 ];
 
