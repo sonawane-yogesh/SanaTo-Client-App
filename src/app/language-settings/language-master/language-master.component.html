@@ -1,0 +1,60 @@
+<app-page-preload></app-page-preload>
+<app-top-header-bar></app-top-header-bar>
+<app-left-menu></app-left-menu>
+<div id="content">
+  <app-page-bread-crumb></app-page-bread-crumb>
+  <div class="container-fluid">
+    <h4 class="pad-btm">Languages</h4>
+    <hr>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title">
+            <h5>Languages</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped data-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Language Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="widget-box ">
+          <div class="widget-title">
+            <h5>Add Language:</h5>
+          </div>
+          <form class="form-horizontal" (ngSubmit)="f.form.valid && submitLanguage(f);" #f="ngForm"
+            accept-charset="UTF-8">
+            <div class="control-group">
+              <label class="control-label"> Language Name: </label>
+              <div class="input-group">
+                <input [(ngModel)]="languageMaster.LanguageName" autofocus="autofocus" name="LanguageName" type="text"
+                  class="form-control" placeholder="Language Name" required="required">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"> Language Description: </label>
+              <div class="input-group">
+                <input [(ngModel)]="languageMaster.LanguageDescription" name="LanguageDescription" type="text"
+                  class="form-control" placeholder="Language Description (Optional)">
+              </div>
+            </div>
+            <div class="control-group col-xs-4">
+              <div class="input-group text-right">
+                <button [disabled]="!f.valid" class="btn btn-success" type="submit">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,17 @@
+<div id="sidebar"><a href="/" class="visible-phone"> Dashboard</a>
+  <ul>
+    <li> <a (click)="openWin('dashboard', 'icon-home');"><i class="icon icon-home"></i>
+        <span>Dashboard</span></a> 
+    </li>
+    <li> <a href="#"><i class="icon icon-unlock"></i> <span>Site Admin</span></a>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Role & User Management</span></a>
+      <ul>
+        <li><a (click)="openWin('role-management', 'icon-user');" routerLinkActive="active">Manage Roles</a>
+        </li>
+        <li><a (click)="openWin('role-management/manage-users', 'icon-user');">Manage Users</a>
+        </li>
+      </ul>
+    </li> 
+  </ul>
+</div>

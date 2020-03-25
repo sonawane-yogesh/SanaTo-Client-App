@@ -1,0 +1,29 @@
+.breadcrumb>li+li:before {
+  content: "";
+}
+
+.breadcrumb li,
+.breadcrumb li a {
+  color: white;
+}
+
+.breadcrumb {
+  padding: 0;
+  background-color: #fcfbfc;
+}
+
+pre {
+  background-color: white;
+  font-size: 120%;
+}
+
+ol>li {
+  padding: 4px;
+}
+
+.src-msg {
+  padding-top: 12px !important;
+}
+.span12{
+  margin-left: 0 !important;
+}

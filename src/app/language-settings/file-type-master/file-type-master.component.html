@@ -1,0 +1,104 @@
+<app-page-preload></app-page-preload>
+<app-top-header-bar></app-top-header-bar>
+<app-left-menu></app-left-menu>
+<div id="content">
+  <app-page-bread-crumb></app-page-bread-crumb>
+  <div class="container-fluid">
+    <h4 class="pad-btm">File / Object Type Master</h4>
+    <hr>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title">
+            <h5>File / Object Types</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped data-table">
+              <thead>
+                <tr>
+                  <th>SR#</th>
+                  <th>Language</th>
+                  <th>File / Object Type Name</th>
+                  <th>Extension</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ftm of fileTypeMasters; let i = index;">
+                  <td style="text-align: right;">{{i+1}}</td>
+                  <td>{{ftm.LanguageMaster.LanguageName}}</td>
+                  <td>{{ftm.FileTypeName}}</td>
+                  <td>{{ftm.FileTypeExtension}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="widget-box ">
+          <div class="widget-title">
+            <h5>File / Object Type:</h5>
+          </div>
+          <form class="form-horizontal" (ngSubmit)="f.form.valid && submitFileTypeMaster(f);" #f="ngForm"
+            accept-charset="UTF-8">
+            <div class="control-group">
+              <label class="control-label"> Select Language: </label>
+              <div class="input-group">
+                <select id="ddlLanguageMaster" [(ngModel)]="fileTypeMaster.LanguageId" class="form-control"
+                  autofocus="autofocus" name="LanguageId" #LanguageId="ngModel" required>
+                  <option value=null selected>Select Language</option>
+                  <option *ngFor="let l of allLanguages;" value="{{l._id}}" class="select2-choice" tabindex="-1">
+                    {{l.LanguageName}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"> File / Object Type Name: (like Programs, Jcl, Includes, etc...) </label>
+              <div class="input-group">
+                <input [(ngModel)]="fileTypeMaster.FileTypeName" name="FileTypeName" type="text" class="form-control"
+                  placeholder="File / Object Type Name" required="required">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"> Extension: (like .pgm, .jcl, .icd, etc...) </label>
+              <div class="input-group">
+                <input [(ngModel)]="fileTypeMaster.FileTypeExtension" name="FileTypeExtension" type="text"
+                  class="form-control" placeholder="File / Object Type Extension">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"> Delimiter Char: (default is , for .CSV files text reading) </label>
+              <div class="input-group">
+                <input name="Delimiter" [(ngModel)]="fileTypeMaster.Delimiter" #Delimiter="ngModel" type="text"
+                  class="form-control" placeholder="Ex. &#92; OR &#44; OR &#34; etc...">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"> Color: </label>
+              <div class="input-group">
+                <input name="Color" type="text" [(ngModel)]="fileTypeMaster.Color" #Color="ngModel" class="form-control"
+                  placeholder="Ex. #FFF78C, #6ec4db, etc..." required>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"> Folder Names: (Comma separated, no space, distinct and lower
+                case)</label>
+              <div class="input-group">
+                <input name="FolderNames" pattern="^[a-zA-Z0-9\,\.\-]*$" [(ngModel)]="fileTypeMaster.FolderNames"
+                  #FolderNames="ngModel" type="text" class="form-control"
+                  placeholder="Ex. Programs, Jcl, Includes, SBR.BP, etc..." required>
+              </div>
+            </div>
+            <div class="control-group col-xs-4">
+              <div class="input-group text-right">
+                <button [disabled]="!f.valid" class="btn btn-success" type="submit">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

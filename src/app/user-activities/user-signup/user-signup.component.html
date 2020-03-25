@@ -1,0 +1,84 @@
+<div id="bg-overlay" style="background-image: url('assets/img/balloon.jpg');"></div>
+<div class="cls-header cls-header-lg">
+  <div class="cls-brand" style="text-align: center;">
+    <a class="box-inline" [routerLink]="['']">
+      <img src="assets/img/logo.png" alt="floKapture" />
+      <span class="brand-title">
+        <font color="#ababab" style="font-style: italic;">flo</font>
+        <font color="#ffc000">Kapture</font> -
+        <span class="text-thin">Login</span>
+      </span>
+    </a>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="span4"></div>
+      <div class="span5">
+        <div class="widget-box">
+          <div class="widget-title">
+            <h5>User Registration</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form name="form" (ngSubmit)="f.form.valid && createAccount();" #f="ngForm" novalidate>
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                <label for="FirstName">First Name:</label>
+                <input type="text" class="form-control" value="Yogesh" name="FirstName" [(ngModel)]="model.FirstName"
+                  #firstName="ngModel" required />
+                <div *ngIf="f.submitted " class="help-block">First Name is required</div>
+              </div>
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                <label for="LastName">Last Name:</label>
+                <input type="text" value="Sonawane" class="form-control" name="LastName" [(ngModel)]="model.LastName"
+                  #lastName="ngModel" required />
+                <div *ngIf="f.submitted" class="help-block">Last Name is required</div>
+              </div>
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                <label for="Email">Email:</label>
+                <input type="text" class="form-control" name="Email" [(ngModel)]="model.Email" email #email="ngModel"
+                  required />
+                <div *ngIf="f.submitted" class="help-block">Email is required</div>
+              </div>
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                <label for="Username">Username:</label>
+                <input type="text" class="form-control" name="Username" [(ngModel)]="model.Username" #userName="ngModel"
+                  required />
+                <div *ngIf="f.submitted" class="help-block">Username is required</div>
+              </div>
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                <label for="Password">Password:</label>
+                <input type="password" class="form-control" name="Password" [(ngModel)]="model.Password"
+                  #password="ngModel" required />
+                <div *ngIf="f.submitted" class="help-block">Password is required</div>
+              </div>
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                <label for="ConfirmPassword">Confirm Password:</label>
+                <input type="password" class="form-control" name="ConfirmPassword" [(ngModel)]="model.ConfirmPassword"
+                  #confirmPassword="ngModel" required />
+                <!-- <div *ngIf="f.submitted" class="help-block">Confirm Password is required</div> -->
+                <div *ngIf="!(model.Password === '' || model.Password === model.ConfirmPassword)" class="help-block">
+                  Passwords do not match!</div>
+              </div>
+              <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">Register</button>
+                <img *ngIf="loading"
+                  src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                &nbsp;<a [routerLink]="['/user-login']" class="btn btn-danger">Cancel</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+    <div class="hide-fixed pull-right pad-rgt" id="divVersion"></div>
+    <p class="pad-lft">
+      &#0169; 2017 FloKapture Solutions. All Rights Reserved.
+    </p>
+  </footer>
+  <div class="modal">
+    <img src="assets/img/ajax-loader.gif" alt="Loading..." />
+  </div>
+</div>

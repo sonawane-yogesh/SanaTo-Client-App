@@ -1,0 +1,129 @@
+<app-page-preload></app-page-preload>
+<app-top-header-bar></app-top-header-bar>
+<!-- <app-left-menu></app-left-menu> -->
+<app-page-bread-crumb></app-page-bread-crumb>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <form class="form-horizontal" (ngSubmit)="f.form.valid && submitFileTypeMaster(f);" #f="ngForm"
+        accept-charset="UTF-8">
+        <div class="span4">
+          <label class="control-label">Object Type: </label>
+          <div class="input-group">
+            <select class='select-option form-control' name="searchOptions.ObjectType" required
+              [(ngModel)]='searchOptions.ObjectType' #ObjectType="ngModel">
+              <option value=null selected>Select Object Type</option>
+              <option class='option' *ngFor='let option of fileTypeMaster' [value]="option._id">
+                {{option.FileTypeName}}</option>
+            </select>
+            <!--  <button class="btn btn-primary btn-mini" (click)="getAllObjects();">Go</button> -->
+          </div>
+        </div>
+        <div class="span4">
+          <label class="control-label">Search for: </label>
+          <div class="input-group">
+            <input class="form-control" [(ngModel)]='searchOptions.SearchKeyword' type="text" #SearchKeyword="ngModel"
+              name="searchOptions.SearchKeyword" placeholder="Search (*Leave empty to list all)" />
+            <button (click)="getAllObjects();" class="btn btn-primary btn-mini">Go</button>
+          </div>
+        </div>
+        <div class="span4">
+          <label class="control-label">Select Object: </label>
+          <div class="input-group">
+            <select autofocus="autofocus" name="searchOptions.SelectedObject" class='select-option form-control'
+              required [(ngModel)]='searchOptions.SelectedObject' #SelectedObject="ngModel">
+              <option value=null>Select Object</option>
+              <option class='option' *ngFor='let option of fileMasters' [value]="option._id">{{option.FileName}}
+              </option>
+            </select>
+            <button class="btn btn-success btn-mini">View</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="span12" style="min-height: 0; margin-left: 0;">
+      <hr>
+    </div>
+    <div class="span12" style="margin: 0; background-color: #fff;">
+      <div class="card">
+        <ul class="nav nav-tabs" style="float: right;" role="tablist">
+          <li class="nav-item" title="Flat source view of the Object">
+            <a class="nav-link active" data-toggle="tab" href="#source" role="tab" aria-selected="false"><span
+                class="hidden-sm-up"></span> <i class="fa fa-file-code-o fa-lg"></i></a>
+          </li>
+          <li class="nav-item" title="Pseudo code with treeview">
+            <a class="nav-link" id="treeView-tab" data-toggle="tab" href="#treeView" role="tab" aria-controls="treeView"
+              aria-selected="false"><i class="fa fa-indent fa-lg"></i></a>
+          </li>
+          <li class="nav-item" (click)="getObjectParagraphs($event);" title="Decision Chart">
+            <a class="nav-link" id="decisionChart-tab" data-toggle="tab" href="#decisionChart" role="tab"
+              aria-controls="decisionChart" aria-selected="false"> <i class="fa fa-sitemap fa-lg"></i></a>
+          </li>
+          <li class="nav-item" title="Workflow Diagram">
+            <a class="nav-link" id="workflowDiagram-tab" data-toggle="tab" href="#workflowDiagram" role="tab"
+              aria-controls="workflowDiagram" aria-selected="false"> <i class="fa fa-line-chart fa-lg"></i></a>
+          </li>
+          <li class="nav-item" title="View / Edit Object Tag(s)">
+            <a class="nav-link" id="objectTag-tab" data-toggle="tab" href="#objectTag" role="tab"
+              aria-controls="objectTag" aria-selected="false"><i class="fa fa-tags"></i></a>
+          </li>
+        </ul>
+        <div class="tab-content tabcontent-border">
+          <div class="tab-pane widget-content active" id="source" role="tabpanel" aria-labelledby="source-tab">
+            <search-text [searchTextConfig]="searchTextConfig"></search-text>
+          </div>
+          <div class="tab-pane widget-content" id="treeView" role="tabpanel" aria-labelledby="treeView-tab">
+            This is Tree View tab pane...
+          </div>
+          <div class="tab-pane widget-content" id="workflowDiagram" role="tabpanel"
+            aria-labelledby="workflowDiagram-tab">
+            <!--  <mind-fusion-diagram [mindFusionConfig]="mindFusionConfig"></mind-fusion-diagram> -->
+          </div>
+          <div class="tab-pane widget-content" id="decisionChart" role="tabpanel" aria-labelledby="decisionChart-tab">
+            <div class="input-group">
+              <div class="span4"> <select autofocus="autofocus" name="selectedParagraph"
+                  class='select-option form-control' required [(ngModel)]='selectedParagraph' ngModel>
+                  <option value=null>Select Object</option>
+                  <option class='option' *ngFor='let option of objParagraphs' [value]="option._id">{{option.MethodName}}
+                    - {{option.BusinessName}}
+                  </option>
+                </select></div>
+              <div class="span4">
+                <button (click)="getStatements($event);" class="btn btn-success btn-mini">View</button>
+              </div>
+              <div class="span12" style="min-height: 0; margin-left: 0;">
+                <hr>
+              </div>
+              <div class="span12" id="decision-matrix" style="margin: 0;"></div>
+            </div>
+          </div>
+          <div class="tab-pane widget-content" id="objectTag" role="tabpanel" aria-labelledby="objectTag-tab">
+            <div class="span8 panel" style="padding: 0;">
+              <div class="span12" style="padding: 0;">
+                <!--     <upload-documents [uploadConfig]="docUploadConfig"></upload-documents> -->
+              </div>
+              <div class="span12" style="padding: 0;">
+                <ul class="list-group">
+                  <li class="list-group-item" *ngFor="let file of uploadedFiles; let i=index">
+                    <div class="span8" style="padding-top: 8px;">
+                      <a style='text-decoration:underline; color:#296bb1; cursor:pointer;' (click)="openPopup(file);">
+                        {{file}}</a>
+                    </div>
+                    <div>
+                      <button class="btn btn-mint btn-labeled fa fa-download" (click)="downloadFile(file);"
+                        type="button">Download</button>
+                      &nbsp;
+                      <button class="btn btn-danger btn-labeled fa fa-trash" (click)="deleteFile(file);"
+                        type="button">Delete</button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

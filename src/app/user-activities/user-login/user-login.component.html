@@ -1,0 +1,48 @@
+ <div class="row-fluid">
+   <div class="span12">
+     <div class="span4"></div>
+     <div class="span4">
+       <div class="widget-box">
+         <div class="widget-title">
+           <h5>User Login</h5>
+         </div>
+         <div class="widget-content nopadding">
+           <form class="form-horizontal" (ngSubmit)="f.form.valid && userLogin(f);" #f="ngForm" accept-charset="UTF-8">
+             <table class="table table-bordered">
+               <tbody>
+                 <tr>
+                   <td>
+                     <div class="span12">
+                       <label class="control-label">Username:</label>
+                       <div>
+                         <input [(ngModel)]="userModel.userName" autofocus="autofocus" name="UserName" type="text"
+                           class="form-control" placeholder="Username" required="required">
+                       </div>
+                     </div>
+                     <div>
+                       <label class="control-label">Password:</label>
+                       <div>
+                         <input [(ngModel)]="userModel.password" name="Password" type="password"
+                           autocomplete="current-password" class="form-control" placeholder="Password" required>
+                       </div>
+                     </div>
+                     <div class="span12">{{message}}
+                     </div>
+                     <div>
+                       <button [disabled]="!f.valid" class="btn btn-success text-uppercase" type="submit">Sign
+                         In</button>&nbsp;
+                       <button type="button" class="btn btn-danger">Cancel</button>
+                     </div>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+           </form>
+         </div>
+       </div>
+       <div class="span4">
+         <a (click)="openWin('user-activities/signup', 'icon-th-list')">Sign up</a>
+       </div>
+     </div>     
+   </div>
+ </div>

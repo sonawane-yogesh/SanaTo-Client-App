@@ -1,0 +1,75 @@
+<app-page-preload></app-page-preload>
+<app-top-header-bar></app-top-header-bar>
+<app-left-menu></app-left-menu>
+<div id="content">
+  <app-page-bread-crumb></app-page-bread-crumb>
+  <div class="container-fluid">
+    <h4 class="pad-btm">Country Master</h4>
+    <hr>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title">
+            <h5>Country Master</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped data-table">
+              <thead>
+                <tr>
+                  <th>Sr#</th>
+                  <th>Country Code</th>
+                  <th>Country Name</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let country of countries; let i = index;">
+                  <td>{{i+1}}</td>
+                  <td>{{country.CountryCode}}</td>
+                  <td>{{country.CountryName}}</td>
+                  <td>
+                    <input type="button" value="Edit" (click)="showDetails(country);" />&nbsp;
+                    <input type="button" value="Delete" (click)="deleteCountry(country);" />&nbsp;
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="widget-box ">
+          <div class="widget-title">
+            <h5>Add Country Details:</h5>
+          </div>
+          <form id="countryForm" class="form-horizontal" (ngSubmit)="f.form.valid && submitCountry(f);" #f="ngForm"
+            accept-charset="UTF-8">
+            <div class="control-group">
+              <label class="control-label"> Country Code: </label>
+              <input type="hidden" [(ngModel)]="countryMaster._id" name="_id" value="countryMaster._id">
+              <div class="input-group">
+                <input [(ngModel)]="countryMaster.CountryCode" autofocus="autofocus" name="CountryCode" type="text"
+                  class="form-control" placeholder="Country Code" required="required">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"> Country Name: </label>
+              <div class="input-group">
+                <input [(ngModel)]="countryMaster.CountryName" name="CountryName" type="text" class="form-control"
+                  placeholder="Country Name" required="required">
+              </div>
+            </div>
+            <div class="control-group col-xs-4">
+              <div class="input-group text-right">
+                <button [disabled]="!f.valid" class="btn btn-success" type="submit">Submit</button>
+                &nbsp;
+                <button [ngStyle]="{'display': update ? 'inline' : 'none'}" [disabled]="!f.valid" class="btn btn-success" type="submit">Update</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

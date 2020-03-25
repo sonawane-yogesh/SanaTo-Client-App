@@ -1,0 +1,30 @@
+.form-group>label {
+  color: black;
+}
+
+li {
+  list-style-type: none;
+  font-size: 15px;
+}
+
+.panel-body {
+  padding: 10px;
+}
+
+td {
+  text-align: left;
+}
+
+form {
+  text-align: left;
+}
+
+.cls-brand {
+  padding: 2px;
+}
+
+.cls-content {
+  padding: 5px 15px 15px;
+  /* padding-top: 10vh; */
+  position: relative;
+}
