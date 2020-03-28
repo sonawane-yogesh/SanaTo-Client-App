@@ -17,7 +17,6 @@
           <option value="">Select Date Column</option>
           <option *ngFor="let h of headers" [value]="h">{{ h }}</option>
         </select>
-        <!-- <div *ngIf="f.submitted " class="help-block">Select Item For Date </div> -->
       </div>
       <div class="col col-md-6">
         <label>Select Primary Key Columns</label>
@@ -30,7 +29,6 @@
         >
           <ng-option [value]="h" *ngFor="let h of headers">{{ h }}</ng-option>
         </ng-select>
-        <!-- <div *ngIf="f.submitted " class="help-block">Select Item For Primary Keys </div> -->
       </div>
     </div>
     <div class="form-group row ">
@@ -44,12 +42,11 @@
           ngModel
           required
         />
-        <!-- <div *ngIf="f.submitted " class="help-block">Provide Date Format </div> -->
       </div>
       <div class="col col-md-6">
         <label>Select Numeric Fields</label>
         <ng-select
-          placeholder="Select Primary Key"
+          placeholder="Select Numeric Fields"
           multiple="true"
           name="NumericFields"
           [(ngModel)]="selectedKeys"
@@ -57,9 +54,30 @@
         >
           <ng-option [value]="h" *ngFor="let h of headers">{{ h }}</ng-option>
         </ng-select>
-        <!-- <div *ngIf="f.submitted " class="help-block">Select Item For Numeric Fields </div> -->
       </div>
     </div>
+    <div class="form-group row">
+      <div class="col col-md-6">
+        <label>Select Non Numeric Fields</label>
+        <ng-select
+          placeholder="Select Non Numeric Fields"
+          multiple="true"
+          name="NonNumericFields"
+          [(ngModel)]="selectedNonNumericKeys"
+          required
+        >
+          <ng-option [value]="h" *ngFor="let h of headers">{{ h }}</ng-option>
+        </ng-select>
+      </div>
+      <div class="col col-md-6">
+        <label>Select Column For Proportionality</label>
+        <select class="form-control" name="ProportionalityColumn" ngModel required>
+          <option value="">Select Date Column</option>
+          <option *ngFor="let h of headers" [value]="h">{{ h }}</option>
+        </select>
+      </div>
+    </div>
+
     <div class="form-group">
       <button
         type="submit"
