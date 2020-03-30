@@ -4,12 +4,12 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app.routing";
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { LayoutModule } from "./layout/layout.module";
 import { CommonModule } from "@angular/common";
 import { ApiInterceptor } from "./base-repositories/api-interceptor";
 import { UploadDocumentsComponent } from "./components/upload-documents/upload-documents.component";
 import { NgSelectModule } from "@ng-select/ng-select";
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [AppComponent, DashboardComponent, UploadDocumentsComponent],
   imports: [
