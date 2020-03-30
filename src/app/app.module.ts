@@ -9,7 +9,7 @@ import { CommonModule } from "@angular/common";
 import { ApiInterceptor } from "./base-repositories/api-interceptor";
 import { UploadDocumentsComponent } from "./components/upload-documents/upload-documents.component";
 import { NgSelectModule } from "@ng-select/ng-select";
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 @NgModule({
   declarations: [AppComponent, DashboardComponent, UploadDocumentsComponent],
   imports: [
