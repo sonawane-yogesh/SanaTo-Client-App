@@ -16,7 +16,7 @@ input.file {
 
 div.file-upload {
   width: 85px;
-  height: 29px;
+  /* height: 29px; */
   background: #dddddd;
   display: inline;
   position: absolute;
@@ -33,7 +33,7 @@ div.file-upload {
   /* font-weight: bold; */
   color: #000000;
   text-align: center;
-  padding-top: 8px;
+  padding-top: 10px;
 }
 
 div.file-upload:before {
@@ -47,7 +47,7 @@ div.file-upload:before {
 
 div.file-upload input {
   position: relative;
-  height: 30px;
+  /* height: 30px; */
   width: 250px;
   display: inline;
   cursor: pointer;

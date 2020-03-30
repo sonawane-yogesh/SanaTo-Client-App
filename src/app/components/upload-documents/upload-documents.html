@@ -1,12 +1,12 @@
-<div style="margin: 5px; padding: 3px 3px 25px 3px;">
+<div style="padding: 3px 3px 0 0;">
   <ol class="breadcrumb">
-    <li style="width: 40%;">
+    <li style="width: 40%; padding-right: 5px;">
       <div>
         <input type="text" (click)="triggerClick(this);" [id]="this.selectedFiles" [placeholder]="uploadConfig.placeHolder"
           class="form-control selected-files" />
       </div>
     </li>
-    <li style="width: 12%; vertical-align: text-bottom; padding-bottom: 8px;">
+    <li style="width: 9%; vertical-align: text-bottom; padding-bottom: 8px;">
       <div class="file-upload">
         <input type="file" class="form-control-file" (change)="showSelected();" [accept]="uploadConfig.allowExtensions"
           [id]="this.fileCtrl" [multiple]="uploadConfig.multiple" />
@@ -14,7 +14,7 @@
     </li>
     <li>
       <div>
-        <button class="btn btn-primary btn-labeled fa fa-upload" (click)="uploadDocuments();" type="button" [id]="this.uploadBtn">Upload</button>
+        <button style="margin: 0;" class="btn btn-primary btn-labeled" (click)="uploadDocuments();" type="button" [id]="this.uploadBtn">Upload</button>
       </div>
     </li>
   </ol>

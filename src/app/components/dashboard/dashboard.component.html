@@ -2,92 +2,73 @@
 <app-top-header-bar></app-top-header-bar>
 <app-left-menu></app-left-menu>
 <div id="content">
-  <!-- <app-page-bread-crumb></app-page-bread-crumb> -->      
+  <app-page-bread-crumb></app-page-bread-crumb>
   <div class="container-fluid">
-    <upload-documents
-      [uploadConfig]="config"
-      (emitResponse)="getResponse($event)"
-    ></upload-documents>
+    <h4 class="pad-btm">Upload CSV with Model Training Details</h4>
+    <hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <form name="form" (ngSubmit)="submitFile()" #f="ngForm" novalidate>
+          <div class="control-group" style="margin-bottom: 0;">
+            <div class="span12">
+              <label>Upload CSV:</label>
+              <upload-documents [uploadConfig]="config" (emitResponse)="getResponse($event)"></upload-documents>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="span6">
+              <label>Select Date Column:</label>
+              <select class="form-control" name="DateColumn" ngModel required>
+                <option value="">Select Date Column</option>
+                <option *ngFor="let h of headers" [value]="h">{{ h }}</option>
+              </select>
+            </div>
+            <div class="span6">
+              <label>Select Primary Key Columns:</label>
+              <ng-select placeholder="Select Primary Key" multiple="true" name="PrimaryKeys" [(ngModel)]="selected"
+                required>
+                <ng-option [value]="h" *ngFor="let h of headers">{{ h }}</ng-option>
+              </ng-select>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="span6 ">
+              <label>Date Format:</label>
+              <input type="text" name="DateFormat" class="form-control" placeholder="mm/dd/yyyy" ngModel required />
+            </div>
+            <div class="span6">
+              <label>Select Numeric Fields:</label>
+              <ng-select placeholder="Select Numeric Fields" multiple="true" name="NumericFields"
+                [(ngModel)]="selectedKeys" required>
+                <ng-option [value]="h" *ngFor="let h of headers">{{ h }}</ng-option>
+              </ng-select>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="span6">
+              <label>Select Non Numeric Fields:</label>
+              <ng-select placeholder="Select Non Numeric Fields" multiple="true" name="NonNumericFields"
+                [(ngModel)]="selectedNonNumericKeys" required>
+                <ng-option [value]="h" *ngFor="let h of headers">{{ h }}</ng-option>
+              </ng-select>
+            </div>
+            <div class="span6">
+              <label>Select Column For Proportionality:</label>
+              <select class="form-control" name="ProportionalityColumn" ngModel required>
+                <option value="">Select Date Column</option>
+                <option *ngFor="let h of headers" [value]="h">{{ h }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="span12">
+              <button type="submit" [disabled]="f.form.invalid" class="btn btn-primary mr-2">Submit</button>
+              <button type="reset" class="btn btn-secondary">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-  <form name="form" (ngSubmit)="submitFile()" #f="ngForm" novalidate>
-    <div class="form-group row ">
-      <div class="col col-md-6 ">
-        <label>Select Date Column</label>
-        <select class="form-control" name="DateColumn" ngModel required>
-          <option value="">Select Date Column</option>
-          <option *ngFor="let h of headers" [value]="h">{{ h }}</option>
-        </select>
-      </div>
-      <div class="col col-md-6">
-        <label>Select Primary Key Columns</label>
-        <ng-select
-          placeholder="Select Primary Key"
-          multiple="true"
-          name="PrimaryKeys"
-          [(ngModel)]="selected"
-          required
-        >
-          <ng-option [value]="h" *ngFor="let h of headers">{{ h }}</ng-option>
-        </ng-select>
-      </div>
-    </div>
-    <div class="form-group row ">
-      <div class="col col-md-6 ">
-        <label>Date Format</label>
-        <input
-          type="text"
-          name="DateFormat"
-          class="form-control"
-          placeholder="mm/dd/yyyy"
-          ngModel
-          required
-        />
-      </div>
-      <div class="col col-md-6">
-        <label>Select Numeric Fields</label>
-        <ng-select
-          placeholder="Select Numeric Fields"
-          multiple="true"
-          name="NumericFields"
-          [(ngModel)]="selectedKeys"
-          required
-        >
-          <ng-option [value]="h" *ngFor="let h of headers">{{ h }}</ng-option>
-        </ng-select>
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col col-md-6">
-        <label>Select Non Numeric Fields</label>
-        <ng-select
-          placeholder="Select Non Numeric Fields"
-          multiple="true"
-          name="NonNumericFields"
-          [(ngModel)]="selectedNonNumericKeys"
-          required
-        >
-          <ng-option [value]="h" *ngFor="let h of headers">{{ h }}</ng-option>
-        </ng-select>
-      </div>
-      <div class="col col-md-6">
-        <label>Select Column For Proportionality</label>
-        <select class="form-control" name="ProportionalityColumn" ngModel required>
-          <option value="">Select Date Column</option>
-          <option *ngFor="let h of headers" [value]="h">{{ h }}</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <button
-        type="submit"
-        [disabled]="f.form.invalid"
-        class="btn btn-primary mr-2"
-      >
-        Submit
-      </button>
-      <button type="reset" class="btn btn-secondary">Cancel</button>
-    </div>
-  </form>
 </div>
 <app-footer></app-footer>
