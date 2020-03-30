@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
       .addItem("parse-csv/add-data-model", trainModel)
       .subscribe(result => {
         this.form.resetForm();
-        
+               
       });
     // console.log("uploaded File details:", this.fileDetails);
     // console.log("form values", trainModel);
