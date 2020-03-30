@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FloKaptureService } from 'src/app/base-repositories/FloKaptureService';
+import { SanaToService } from 'src/app/base-repositories/SanaToService';
 import { UserMaster } from 'src/app/models';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserMaster } from 'src/app/models';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent {
-  constructor(private router: Router, private floKaptureService: FloKaptureService) { }
+  constructor(private router: Router, private SanaToService: SanaToService) { }
   public userModel = {
     userName: "yogeshs",
     password: "Yogesh@123"
@@ -19,7 +19,7 @@ export class UserLoginComponent {
   userLogin(ngForm: NgForm) {
     localStorage.setItem("activeMenu", "icon-home");
     console.log(ngForm.value);
-    this.floKaptureService.userMaster
+    this.SanaToService.userMaster
       .executeAction({ type: "post", endPoint: "user-master/user-login", data: ngForm.value as UserMaster })
       .subscribe((res) => {
         console.log(res);

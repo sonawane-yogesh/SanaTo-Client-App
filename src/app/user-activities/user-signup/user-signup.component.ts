@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FloKaptureService } from 'src/app/base-repositories/FloKaptureService';
+import { SanaToService } from 'src/app/base-repositories/SanaToService';
 import { Router } from '@angular/router';
 import { UserMaster } from 'src/app/models';
 
@@ -32,13 +32,13 @@ export class UserSignupComponent implements OnInit {
   };
   */
   public loading = false;
-  constructor(private router: Router, private floKaptureService: FloKaptureService) { }
+  constructor(private router: Router, private SanaToService: SanaToService) { }
   ngOnInit() { }
   createAccount() {
     var userModel = this.model;
     this.loading = true;
     this
-      .floKaptureService
+      .SanaToService
       .userMaster.addItem("user-master/add-user", userModel)
       .subscribe(data => {
         console.log(data);
